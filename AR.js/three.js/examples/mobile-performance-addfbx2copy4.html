@@ -191,9 +191,9 @@
         //icosphere: example from from 3js playground 
         //add the geometry, material, and mesh lines from the 3js GUI
         //MAKE SURE SCALE IS 1 (a scale of 1 will mean your object is as big as the image target)
-        // geometry = new THREE.CubeGeometry(1, 1, 1);
-        // material = new THREE.MeshNormalMaterial({shading: THREE.FlatShading});
-        // mesh = new THREE.Mesh(geometry, material);
+        geometry = new THREE.CubeGeometry(1, 1, 1);
+        material = new THREE.MeshNormalMaterial({shading: THREE.FlatShading});
+        mesh = new THREE.Mesh(geometry, material);
         
         //Keep these lines
         mesh.position.y	= 0.5 //position y equals how far away from target 
@@ -218,21 +218,21 @@
         
         ///////////////////////////////////////////////////////////
         // add a fbx model with animation
-        // var loader = new THREE.FBXLoader();
-        // loader.load( '../../data/data/handGLoptB.fbx', function ( object ) {
-        //     object.mixer = new THREE.AnimationMixer( object );
-        //     mixers.push( object.mixer );
-        //     var action = object.mixer.clipAction( object.animations[ 0 ] );
-        //     action.play();
-        //     object.traverse( function ( child ) {
-        //         if ( child.isMesh ) {
-        //             child.castShadow = true;
-        //             child.receiveShadow = true;
-        //         }
-        //     } );
-        //     object.scale.set(.02, .02, .02);
-        //     arWorldRoot.add( object );
-        // } );
+        var loader = new THREE.FBXLoader();
+        loader.load( '../../data/data/handGLoptB.fbx', function ( object ) {
+            object.mixer = new THREE.AnimationMixer( object );
+            mixers.push( object.mixer );
+            var action = object.mixer.clipAction( object.animations[ 0 ] );
+            action.play();
+            object.traverse( function ( child ) {
+                if ( child.isMesh ) {
+                    child.castShadow = true;
+                    child.receiveShadow = true;
+                }
+            } );
+            object.scale.set(.02, .02, .02);
+            arWorldRoot.add( object );
+        } );
         //end fbx code
         ///////////////////////////////////////////////////////////
         
